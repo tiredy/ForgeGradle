@@ -232,7 +232,11 @@ public class TaskSingleReobf extends DefaultTask {
                 // correct source name
                 if (e.getName().endsWith(".class")) {
                     for (ReobfTransformer trans : transformers) {
-                        data = trans.transform(data);
+                        try {
+                            data = trans.transform(data);
+                        } catch (Exception exception) {
+                            getLogger().warn("Failed to transform class {} using transformer {}", e.getName(), trans.getClass().getName(), exception);
+                        }
                     }
                 }
 
