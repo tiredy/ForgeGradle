@@ -305,14 +305,14 @@ public class PatcherPlugin extends BasePlugin<PatcherExtension> {
     protected void makeCleanTasks() {
         RemapSources remapCleanTask = makeTask(TASK_CLEAN_REMAP, RemapSources.class);
 
-            remapCleanTask.setInJar(delayedFile(JAR_DECOMP_POST));
-            remapCleanTask.setOutJar(delayedFile(JAR_REMAPPED));
-            remapCleanTask.setMethodsCsv(delayedFile(Constants.CSV_METHOD));
-            remapCleanTask.setFieldsCsv(delayedFile(Constants.CSV_FIELD));
-            remapCleanTask.setParamsCsv(delayedFile(Constants.CSV_PARAM));
-            remapCleanTask.setAddsJavadocs(false);
-            remapCleanTask.setDoesCache(false);
-            remapCleanTask.dependsOn(TASK_POST_DECOMP);
+        remapCleanTask.setInJar(delayedFile(JAR_DECOMP_POST));
+        remapCleanTask.setOutJar(delayedFile(JAR_REMAPPED));
+        remapCleanTask.setMethodsCsv(delayedFile(Constants.CSV_METHOD));
+        remapCleanTask.setFieldsCsv(delayedFile(Constants.CSV_FIELD));
+        remapCleanTask.setParamsCsv(delayedFile(Constants.CSV_PARAM));
+        remapCleanTask.setAddsJavadocs(false);
+        remapCleanTask.setDoesCache(false);
+        remapCleanTask.dependsOn(TASK_POST_DECOMP);
 
         Object delayedRemapped = delayedFile(JAR_REMAPPED);
 

@@ -72,6 +72,7 @@ public class FmlCleanup {
         remap = new HashMap<String, String>();
         remap.put("long", "int");
     }
+
     private FmlCleanup(FmlCleanup parent) {
         last = Maps.newHashMap();
         for (Entry<String, Holder> e : parent.last.entrySet()) {

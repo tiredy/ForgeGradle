@@ -45,6 +45,7 @@ public class CacheContainer {
     protected final List<Annotated> cachedList = Lists.newArrayList();
     protected final List<Annotated> inputList = Lists.newArrayList();
     protected final List<WriteCacheAction> lastActions = Lists.newArrayList();
+
     private CacheContainer(Class<?> cacheable) {
         Class<?> task = cacheable;
         while (task != null && !task.getName().startsWith("org.gradle.")) {

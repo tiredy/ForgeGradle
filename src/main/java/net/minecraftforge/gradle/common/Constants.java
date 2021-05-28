@@ -161,19 +161,19 @@ public class Constants {
     public static final String GRADLE_START_SERVER = "GradleStartServer";
 
     public static final String[] GRADLE_START_RESOURCES = new String[]{
-        "GradleStart.java",
-        "GradleStartServer.java",
-        "net/minecraftforge/gradle/GradleStartCommon.java"
+            "GradleStart.java",
+            "GradleStartServer.java",
+            "net/minecraftforge/gradle/GradleStartCommon.java"
 
-        // 1.7.10 only
-        //makeStart.addResource("net/minecraftforge/gradle/OldPropertyMapSerializer.java");
+            // 1.7.10 only
+            //makeStart.addResource("net/minecraftforge/gradle/OldPropertyMapSerializer.java");
     };
 
     public static final String[] GRADLE_START_FML_RES = new String[]{
-        "net/minecraftforge/gradle/GradleForgeHacks.java",
-        "net/minecraftforge/gradle/tweakers/CoremodTweaker.java",
-        "net/minecraftforge/gradle/tweakers/AccessTransformerTweaker.java",
-        "net/minecraftforge/gradle/GrossClassloaderHacks.java"
+            "net/minecraftforge/gradle/GradleForgeHacks.java",
+            "net/minecraftforge/gradle/tweakers/CoremodTweaker.java",
+            "net/minecraftforge/gradle/tweakers/AccessTransformerTweaker.java",
+            "net/minecraftforge/gradle/GrossClassloaderHacks.java"
     };
 
     // mcp data constants

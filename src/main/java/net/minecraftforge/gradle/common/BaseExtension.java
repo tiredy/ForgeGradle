@@ -99,6 +99,7 @@ public abstract class BaseExtension {
 
     /**
      * Enables/Disables the option to use GitVersion in the "ProjectVersion.java" class
+     *
      * @param gitVersion boolean
      */
     public void setGitVersion(boolean gitVersion) {
@@ -107,6 +108,7 @@ public abstract class BaseExtension {
 
     /**
      * Returns the value of if gitVersion is enabled or disabled
+     *
      * @return Whether gitVersion is enabled/disabled.
      */
     public boolean isGitVersion() {

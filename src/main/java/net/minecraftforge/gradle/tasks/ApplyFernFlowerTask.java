@@ -67,7 +67,7 @@ public class ApplyFernFlowerTask extends CachedTask {
     @OutputFile
     Object outJar;
 
-    private FileCollection         classpath;
+    private FileCollection classpath;
 
     @TaskAction
     public void applyFernFlower() throws IOException {
@@ -104,23 +104,23 @@ public class ApplyFernFlowerTask extends CachedTask {
 
     public static class AdvancedJadRenamerFactory implements IVariableNamingFactory {
         @Override
-        public IVariableNameProvider createFactory(StructMethod arg0)
-        {
+        public IVariableNameProvider createFactory(StructMethod arg0) {
             // TODO Auto-generated method stub
             return new AdvancedJadRenamer(arg0);
         }
     }
+
     public static class AdvancedJadRenamer extends JADNameProvider {
         private StructMethod wrapper;
         private static final Pattern p = Pattern.compile("func_(\\d+)_.*");
-        public AdvancedJadRenamer(StructMethod wrapper)
-        {
+
+        public AdvancedJadRenamer(StructMethod wrapper) {
             super(wrapper);
             this.wrapper = wrapper;
         }
+
         @Override
-        public String renameAbstractParameter(String abstractParam, int index)
-        {
+        public String renameAbstractParameter(String abstractParam, int index) {
             String result = abstractParam;
             if ((wrapper.getAccessFlags() & CodeConstants.ACC_ABSTRACT) != 0) {
                 String methName = wrapper.getName();
@@ -133,6 +133,7 @@ public class ApplyFernFlowerTask extends CachedTask {
 
         }
     }
+
     class ByteCodeProvider implements IBytecodeProvider {
         @Override
         public byte[] getBytecode(String externalPath, String internalPath) throws IOException {
@@ -158,13 +159,14 @@ public class ApplyFernFlowerTask extends CachedTask {
         private final Map<String, ZipOutputStream> mapArchiveStreams = new HashMap<String, ZipOutputStream>();
         private final Map<String, Set<String>> mapArchiveEntries = new HashMap<String, Set<String>>();
         private final File root;
+
         public ArtifactSaver(File tempDir) {
             this.root = tempDir;
         }
 
         private String getAbsolutePath(String path) {
             return new File(root, path).getAbsolutePath();
-          }
+        }
 
 
         @Override
@@ -311,13 +313,11 @@ public class ApplyFernFlowerTask extends CachedTask {
         this.outJar = outJar;
     }
 
-    public FileCollection getClasspath()
-    {
+    public FileCollection getClasspath() {
         return classpath;
     }
 
-    public void setClasspath(FileCollection classpath)
-    {
+    public void setClasspath(FileCollection classpath) {
         this.classpath = classpath;
     }
 
