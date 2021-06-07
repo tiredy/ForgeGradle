@@ -37,7 +37,12 @@ import java.util.Set;
 import java.util.zip.ZipFile;
 
 import org.gradle.api.file.FileCollection;
-import org.gradle.api.tasks.*;
+import org.gradle.api.tasks.Input;
+import org.gradle.api.tasks.InputFile;
+import org.gradle.api.tasks.InputFiles;
+import org.gradle.api.tasks.Optional;
+import org.gradle.api.tasks.OutputFile;
+import org.gradle.api.tasks.TaskAction;
 
 import com.google.common.base.Charsets;
 import com.google.common.base.Joiner;
@@ -348,8 +353,6 @@ public class DeobfuscateJar extends CachedTask {
         this.inJar = inJar;
     }
 
-    @OutputFile
-    @Optional
     public File getLog() {
         if (log == null)
             return null;
@@ -390,7 +393,7 @@ public class DeobfuscateJar extends CachedTask {
      *
      * @return Object that will resolve to
      */
-    @Internal
+    @SuppressWarnings("serial")
     public Closure<File> getDelayedOutput() {
         return new Closure<File>(DeobfuscateJar.class) {
             public File call() {

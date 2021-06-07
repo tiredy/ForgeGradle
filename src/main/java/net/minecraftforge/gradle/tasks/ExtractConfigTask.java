@@ -45,11 +45,14 @@ public class ExtractConfigTask extends CachedTask implements PatternFilterable {
     @Input
     private String config;
 
+    @Input
     private PatternSet patternSet = new PatternSet();
 
     @Input
     private boolean includeEmptyDirs = true;
 
+    @Input
+    @Optional
     private boolean clean = false;
 
     @Cached
@@ -125,11 +128,6 @@ public class ExtractConfigTask extends CachedTask implements PatternFilterable {
         this.clean = clean;
     }
 
-    @Input
-    public boolean isClean() {
-        return clean;
-    }
-
     @Override
     public PatternFilterable exclude(String... arg0) {
         return patternSet.exclude(arg0);
@@ -152,13 +150,11 @@ public class ExtractConfigTask extends CachedTask implements PatternFilterable {
     }
 
     @Override
-    @Input
     public Set<String> getExcludes() {
         return patternSet.getExcludes();
     }
 
     @Override
-    @Input
     public Set<String> getIncludes() {
         return patternSet.getIncludes();
     }

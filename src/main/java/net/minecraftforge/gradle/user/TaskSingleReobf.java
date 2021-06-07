@@ -35,8 +35,7 @@ import net.minecraftforge.gradle.util.GradleConfigurationException;
 import net.minecraftforge.gradle.util.mcp.ReobfExceptor;
 import org.gradle.api.DefaultTask;
 import org.gradle.api.file.FileCollection;
-import org.gradle.api.tasks.*;
-import org.gradle.api.tasks.Optional;
+import org.gradle.api.tasks.TaskAction;
 import org.objectweb.asm.ClassReader;
 
 import java.io.*;
@@ -281,21 +280,14 @@ public class TaskSingleReobf extends DefaultTask {
     // Main Jar and classpath
     // --------------------------------------------
 
-    @InputFiles
     public File getJar() {
         return getProject().file(jar);
-    }
-
-    @InputFile
-    public File getOutput() {
-        return getJar();
     }
 
     public void setJar(Object jar) {
         this.jar = jar;
     }
 
-    @InputFiles
     public FileCollection getClasspath() {
         return classpath;
     }
@@ -307,7 +299,6 @@ public class TaskSingleReobf extends DefaultTask {
     // SRG STUFF
     // --------------------------------------------
 
-    @InputFile
     public File getPrimarySrg() {
         if (primarySrg == null)
             throw new GradleConfigurationException("Primary reobfuscation for Task '" + getName() + "' isnt set!");
@@ -322,7 +313,6 @@ public class TaskSingleReobf extends DefaultTask {
         secondarySrgFiles.add(thing);
     }
 
-    @InputFiles
     public FileCollection getSecondarySrgFiles() {
         List<File> files = new ArrayList<File>(secondarySrgFiles.size());
 
@@ -342,7 +332,6 @@ public class TaskSingleReobf extends DefaultTask {
         return getProject().files(files);
     }
 
-    @Input
     public List<String> getExtraSrgLines() {
         return extraSrgLines;
     }
@@ -362,8 +351,6 @@ public class TaskSingleReobf extends DefaultTask {
     // GETTERS AND STUF FOR DECOMP SPECIFIC STUFF
     // --------------------------------------------
 
-    @InputFile
-    @Optional
     public File getFieldCsv() {
         return fieldCsv == null ? null : getProject().file(fieldCsv);
     }
@@ -372,8 +359,6 @@ public class TaskSingleReobf extends DefaultTask {
         this.fieldCsv = fieldCsv;
     }
 
-    @InputFile
-    @Optional
     public File getMethodCsv() {
         return methodCsv == null ? null : getProject().file(methodCsv);
     }
@@ -382,8 +367,6 @@ public class TaskSingleReobf extends DefaultTask {
         this.methodCsv = methodCsv;
     }
 
-    @InputFile
-    @Optional
     public File getExceptorCfg() {
         return exceptorCfg == null ? null : getProject().file(exceptorCfg);
     }
@@ -392,8 +375,6 @@ public class TaskSingleReobf extends DefaultTask {
         this.exceptorCfg = file;
     }
 
-    @InputFile
-    @Optional
     public File getDeobfFile() {
         return deobfFile == null ? null : getProject().file(deobfFile);
     }
@@ -402,8 +383,6 @@ public class TaskSingleReobf extends DefaultTask {
         this.deobfFile = deobfFile;
     }
 
-    @InputFile
-    @Optional
     public File getRecompFile() {
         return recompFile == null ? null : getProject().file(recompFile);
     }
@@ -412,7 +391,6 @@ public class TaskSingleReobf extends DefaultTask {
         this.recompFile = recompFile;
     }
 
-    @Input
     public boolean isDecomp() {
         return isDecomp;
     }
@@ -424,7 +402,6 @@ public class TaskSingleReobf extends DefaultTask {
     // EXTRA FANCY TRANSFORMERS
     // --------------------------------------------
 
-    @Internal
     public List<ReobfTransformer> getPostTransformers() {
         return postTransformers; // Autobots! ROLL OUT!
     }
@@ -437,7 +414,6 @@ public class TaskSingleReobf extends DefaultTask {
         postTransformers.add(new ClosureTransformer(decepticon));
     }
 
-    @Internal
     public List<ReobfTransformer> getPreTransformers() {
         return preTransformers; // Autobots! ROLL OUT!
     }

@@ -49,6 +49,7 @@ public class TaskSourceCopy extends DefaultTask {
     @Input
     HashMap<String, Object> replacements = new HashMap<String, Object>();
 
+    @Input
     ArrayList<String> includes = new ArrayList<String>();
 
     @OutputDirectory
@@ -191,7 +192,6 @@ public class TaskSourceCopy extends DefaultTask {
         includes.addAll(strs);
     }
 
-    @Input
     public ArrayList<String> getIncudes() {
         return includes;
     }
